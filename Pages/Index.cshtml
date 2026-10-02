@@ -1,0 +1,21 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">TestApplicationApp</h1>
+    <p>OIDC Relying Party stub for AuthBridge SSO verification.</p>
+
+    @if (User.Identity is { IsAuthenticated: true })
+    {
+        <p>Signed in as <strong>@User.Identity.Name</strong></p>
+        <a class="btn btn-primary" href="/Secure">Go to Secure Page</a>
+        <a class="btn btn-secondary" href="?handler=Logout">Logout</a>
+    }
+    else
+    {
+        <a class="btn btn-primary" href="?handler=Login">Login</a>
+    }
+</div>

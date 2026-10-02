@@ -1,0 +1,26 @@
+@page
+@model TestApplicationApp.Pages.SecureModel
+@{
+    ViewData["Title"] = "Secure";
+}
+
+<h1>Secure Page</h1>
+
+@if (Model.HasAppAccess)
+{
+    <p class="text-success"><strong>Access granted to Test Application App</strong></p>
+}
+else
+{
+    <p class="text-danger"><strong>Signed in, but NOT authorized for this application</strong></p>
+}
+
+<h2>Claims</h2>
+<ul>
+    @foreach (var claim in User.Claims)
+    {
+        <li>@claim.Type = @claim.Value</li>
+    }
+</ul>
+
+<a href="/">Home</a>
